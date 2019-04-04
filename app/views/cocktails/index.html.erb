@@ -1,0 +1,15 @@
+<h1>Welcome to Sophia's Cocktail Bar</h1>
+
+<h2>Menu:</h2>
+
+<ul>
+  <% @cocktails.each do |cocktail| %>
+  <li>
+    <%= cocktail.name %>
+    <%= link_to "details", cocktail_path(cocktail) %>
+    <%= link_to "add a dose", new_cocktail_dose_path(cocktail) %>
+    </li>
+  <% end %>
+</ul>
+
+<p><%=link_to "create a cocktail", new_cocktail_path %></p>
