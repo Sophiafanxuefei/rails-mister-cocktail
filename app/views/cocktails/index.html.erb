@@ -2,19 +2,19 @@
   <div class="container p-3">
     <h1>Welcome to Sophia's Cocktail Bar</h1>
     <p>Enjoy our creative drinks!</p>
+    <%= link_to 'add a cocktail', new_cocktail_path, class: 'btn btn-flat' %>
   </div>
 </div>
 
 
+<div class="m-5 container d-flex justify-content-around">
+  <% @cocktails.each do |cocktail| %>
+  <%= link_to cocktail_path(cocktail) do %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cocktail.cocktailUrl%>)">
+    <%= cocktail.name %>
+    </div>
+  <% end %>
 
-<p><%=link_to "create a cocktail", new_cocktail_path %></p>
-
-
-<% @cocktails.each do |cocktail| %>
-
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/random)">
-  <%= cocktail.name %>
+  <% end %>
 </div>
-
-<% end %>
 
