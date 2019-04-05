@@ -1,12 +1,29 @@
-hi this is show page
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(https://static.vinepair.com/wp-content/uploads/2015/06/fake-cocktail-bar-liqueurs.jpg);">
+  <div class="card-description">
+    <h2><%= @cocktail.name %></h2>
+  </div>
+</div>
 
-<div><%= @cocktail.name %></div>
-<div>
+<div class="container my-3">
+  <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+</div>
+
+<div class="container">
+  <h5>Doses:</h5>
+  <div>
   <% @cocktail.doses.each do |dose| %>
   <p>
     <%= dose.description %>  <%= dose.ingredient.name  %> <%=link_to "delete", dose_path(dose), method: :delete %>
   </p>
   <% end %>
+  </div>
+  <div class="d-flex justify-content-around">
+  <%=link_to "Add a dose", new_cocktail_dose_path(@cocktail), class: 'btn btn-success'%>
+  <%=link_to "Back to Index", cocktails_path, class: 'btn btn-primary' %>
+  </div>
 </div>
-<div><%=link_to "Back to Index", cocktails_path %></div>
-<div><%=link_to "Add a dose", new_cocktail_dose_path(@cocktail) %></div>
+
+
+
+
+
